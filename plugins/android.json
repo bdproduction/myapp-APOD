@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.example.myApp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.example.myApp"
+        },
+        "cordova-plugin-wallpaper": {
+            "PACKAGE_NAME": "com.example.myApp"
+        }
+    },
+    "dependent_plugins": {}
+}
