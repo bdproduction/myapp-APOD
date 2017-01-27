@@ -18,6 +18,9 @@
         },
         "cordova-plugin-background-mode": {
             "PACKAGE_NAME": "com.example.myApp"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.example.myApp"
         }
     },
     "dependent_plugins": {

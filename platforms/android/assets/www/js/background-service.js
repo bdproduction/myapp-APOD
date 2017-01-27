@@ -32,20 +32,20 @@ var BackgroundService = function(){
 
     function setDailyTimer(){
         if(dailyTimer == null && dailyTimer == null && isInBackground) {
-            testTimer = setInterval(function () {
-                console.log("running in background");
-
-                // primer za dali "stvarno" funkcionire :D za profesorte
-                if(_switch){
-                    _backgroundService.executeTask("https://apod.nasa.gov/apod/image/1701/ab_moon_from_geo_orbit_med_res_jan_15_2017_1024.jpg");
-                    _switch = false;
-                }else{
-                    _backgroundService.executeTask("http://met.live.mediaspanonline.com/assets/31069/example-608web_w608.jpg");
-                    _switch = true;
-                }
-
-
-            }, 10000);
+            // testTimer = setInterval(function () {
+            //     console.log("running in background");
+            //
+            //     // primer za dali "stvarno" funkcionire :D za profesorte
+            //     if(_switch){
+            //         _backgroundService.executeTask("http://flif.info/example-images/fish.png");
+            //         _switch = false;
+            //     }else{
+            //         _backgroundService.executeTask("https://1667590688.rsc.cdn77.org/data/user-content/Ikony%20kategorii/AkvaTera/akvaristika.png");
+            //         _switch = true;
+            //     }
+            //
+            //
+            // }, 10000);
 
             var day = 1000*60*60*24;
             dailyTimer = setInterval(function () {
@@ -58,12 +58,7 @@ var BackgroundService = function(){
     /* Public */
     /*Image URL*/
     this.executeTask = function(url){
-        if(checkIfBackgroundModeActivated()){
-            window.plugins.wallpaper.setImageHttp (url);
-        }else{
-            //app is in foreground
-            console.log('app is in foreground');
-        }
+        window.plugins.wallpaper.setImageHttp (url);
     };
 
     /* Private */

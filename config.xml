@@ -27,4 +27,5 @@
     <engine name="android" spec="~6.0.0" />
     <plugin name="cordova-plugin-wallpaper" spec="https://github.com/fbsanches/cordova-plugin-wallpaper.git" />
     <plugin name="cordova-plugin-background-mode" spec="~0.6.5" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
 </widget>

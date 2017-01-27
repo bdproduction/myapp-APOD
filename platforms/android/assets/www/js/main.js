@@ -4,20 +4,25 @@ var slika;
 var _slideshow = new Slideshow();
 var _backgroundService = new BackgroundService();
 
+var currentImage = "";
+
 // $(document).ready(function () {
 //     initApplication();
 // });
 
 $("#update").click(function() {
-
+    _backgroundService.executeTask(currentImage);
 });
 
 function initApplication(days){
+    navigator.splashscreen.show();
+    window.setTimeout(function () {
+        navigator.splashscreen.hide();
+    }, 3000);
+
     _backgroundService.initBackgroundMode();
 
-    if(days == undefined)
-        days = 1;
-    getNewImage(days);
+    getNewImage(1);
 
     _slideshow.init();
 };
@@ -67,6 +72,6 @@ function updateImage(url) {
     _slideshow.setImage(url);
     _slideshow.startSlideshow();
 
-    _backgroundService.executeTask(url);
+    currentImage = url;
 }
 
