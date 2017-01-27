@@ -9,15 +9,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        WallpaperManager myWallpaperManager = WallpaperManager.getInstance(getApplicationContext());
-        try {
-            myWallpaperManager.setResource(R.drawable.bg01);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
-
-
 }

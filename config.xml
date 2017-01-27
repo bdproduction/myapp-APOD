@@ -16,7 +16,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-intent href="*://*api.nasa.gov/*"/>
+    <allow-intent href="*://*api.nasa.gov/*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
@@ -25,4 +25,6 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="~6.0.0" />
+    <plugin name="cordova-plugin-wallpaper" spec="https://github.com/fbsanches/cordova-plugin-wallpaper.git" />
+    <plugin name="cordova-plugin-background-mode" spec="~0.6.5" />
 </widget>

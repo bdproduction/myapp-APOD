@@ -2,43 +2,42 @@ var myApiKey = "DEMO_KEY";
 var slika;
 
 var _slideshow = new Slideshow();
+var _backgroundService = new BackgroundService();
 
-$(document).ready(function () {
-    initApplication();
+// $(document).ready(function () {
+//     initApplication();
+// });
+
+$("#update").click(function() {
+
 });
+
+function initApplication(days){
+    _backgroundService.initBackgroundMode();
+
+    if(days == undefined)
+        days = 1;
+    getNewImage(days);
+
+    _slideshow.init();
+};
+
+function getNewImage(days){
+    var url = buildApodUrl(days);
+}
+function buildApodUrl(days) {
+    var date = getDateForImage(days);
+    var url = "https://api.nasa.gov/planetary/apod";
+    url += "?date=" + date + "&api_key=" + myApiKey;
+    console.log(url);
+
+    submitRequest(url);
+}
 function getDateForImage(dayBefore){
     var date = new Date();
     var dayOfMonth = new Date(new Date().setDate(date.getDate()-dayBefore)).getDate();
     date = date.getFullYear() + '-' + date.getMonth() + 1 + '-' + dayOfMonth;
     return date;
-};
-
-function initApplication(days){
-    if(days == undefined)
-        days = 1;
-    var date = getDateForImage(days);
-    var url = buildApodUrl(date);
-    submitRequest(url);
-
-    _slideshow.init();
-};
-
-var days = 1;
-function updateTest(){
-    var interval = window.setInterval(function () {
-        days++;
-        initApplication(days);
-        window.clearInterval(interval);
-    }, 10000);
-}
-
-function buildApodUrl(date) {
-
-    var url = "https://api.nasa.gov/planetary/apod";
-    url += "?date=" + date + "&api_key=" + myApiKey;
-    console.log(url);
-
-    return url;
 }
 function submitRequest(url){
     $.ajax({
@@ -54,45 +53,20 @@ function submitRequest(url){
     });
 };
 
-function submitRequest1(url) {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = handleReadyStateChange;
-    request.open("GET", url, true);
-    request.send();
-    return request;
+function updateTitle(title) {
+    document.getElementById("apod-title").innerHTML = title;
 }
-
-function handleReadyStateChange(event) {
-    var request = event.target;
-    if ((request.readyState == 4) && (request.status == 200)) {
-        var response = JSON.parse(request.responseText);
-        updateImage(response.url);
-        updateTitle(response.title);
-        updateDescription(response.explanation);
-    }
+function updateDescription(desc) {
+    document.getElementById("apod-desc").innerHTML = desc;
 }
-
-
-$("#update").click(function() {
-
- });
-
 
 function updateImage(url) {
     slika = "'" + url + "'";
     console.log(slika);
 
-
     _slideshow.setImage(url);
     _slideshow.startSlideshow();
-}
 
-function updateTitle(title) {
-    document.getElementById("apod-title").innerHTML = title;
-}
-
-function updateDescription(desc) {
-    document.getElementById("apod-desc").innerHTML = desc;
-
+    _backgroundService.executeTask(url);
 }
 

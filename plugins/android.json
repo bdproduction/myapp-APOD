@@ -15,7 +15,14 @@
         },
         "cordova-plugin-wallpaper": {
             "PACKAGE_NAME": "com.example.myApp"
+        },
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "com.example.myApp"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.example.myApp"
+        }
+    }
 }
