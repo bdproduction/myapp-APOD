@@ -35,7 +35,7 @@ var BackgroundService = function(){
             // testTimer = setInterval(function () {
             //     console.log("running in background");
             //
-            //     // primer za dali "stvarno" funkcionire :D za profesorte
+            //     // primer 
             //     if(_switch){
             //         _backgroundService.executeTask("http://flif.info/example-images/fish.png");
             //         _switch = false;
